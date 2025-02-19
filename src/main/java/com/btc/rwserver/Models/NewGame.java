@@ -1,15 +1,15 @@
 package com.btc.rwserver.Models;
 
 public class NewGame {
-    private int mapId;
+    private String mapId;
 
     public NewGame() {}
 
-    public NewGame(int mapId) {
+    public NewGame(String mapId) {
         this.mapId = mapId;
     }
 
-    public int getMapId() {
+    public String getMapId() {
         return mapId;
     }
 }

@@ -1,9 +1,23 @@
 package com.btc.rwserver.Models;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "Maps")
 public class Map {
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
+    @Column(name = "Id")
+
     private String id;
+
+    @Column(name = "Map Width")
     private int mapSizeX;
+
+    @Column(name = "Map Size")
     private int mapSize;
+
+    @Column(name = "Map Items")
     private MapItem[] mapItems;
 
     public Map() {}

@@ -1,21 +1,32 @@
 package com.btc.rwserver.Models;
 
-enum GameStatus {
-    INITIAL,
-    STARTED,
-    END
-}
+import jakarta.persistence.*;
 
+import java.util.List;
+
+@Entity
+@Table(name = "Games")
 public class Game {
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
+    @Column(name = "Id")
     private String id;
+
+    @Column(name = "Map Id")
     private String map;
-    private PlayerRobot[] player;
-    private Move[] moves;
+
+    @Column(name = "Players")
+    private List<PlayerRobot> player;
+
+    @Column(name = "Moves")
+    private List<Move> moves;
+
+    @Column(name = "Status")
     private GameStatus status;
 
     public Game() {}
 
-    public Game(String id, String map, PlayerRobot[] player, Move[] moves, GameStatus status) {
+    public Game(String id, String map, List<PlayerRobot> player, List<Move> moves, GameStatus status) {
         this.id = id;
         this.map = map;
         this.player = player;
@@ -31,11 +42,11 @@ public class Game {
         return map;
     }
 
-    public PlayerRobot[] getPlayer() {
+    public List<PlayerRobot> getPlayer() {
         return player;
     }
 
-    public Move[] getMoves() {
+    public List<Move> getMoves() {
         return moves;
     }
 
