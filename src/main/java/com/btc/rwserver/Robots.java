@@ -1,10 +1,9 @@
 package com.btc.rwserver;
 
 import com.btc.rwserver.Controllers.HibernateController;
-import com.btc.rwserver.Models.NewRobot;
 import com.btc.rwserver.Models.Robot;
-import org.springframework.web.bind.annotation.*;
 
+import org.springframework.web.bind.annotation.*;
 import java.util.*;
 
 @RestController
@@ -22,17 +21,8 @@ public class Robots {
     }
 
     @PostMapping("/robot")
-    public Robot registerRobot(@RequestBody NewRobot newRobot) {
-        Robot robot = new Robot(
-                newRobot.getName(),
-                newRobot.getHealth(),
-                newRobot.getAttackDamage(),
-                newRobot.getAttackRange(),
-                newRobot.getMovementRate()
-        );
-
+    public Robot createRobot(@RequestBody Robot robot) {
         HibernateController.addObject(robot);
-
         return robot;
     }
 }

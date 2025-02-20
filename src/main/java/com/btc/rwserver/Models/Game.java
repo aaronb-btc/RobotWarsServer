@@ -3,6 +3,8 @@ package com.btc.rwserver.Models;
 import jakarta.persistence.*;
 
 import java.util.List;
+import java.util.UUID;
+import java.util.Map;
 
 @Entity
 @Table(name = "Games")
@@ -10,14 +12,15 @@ public class Game {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "Id")
-    private String id;
+    private UUID id;
 
-    @Column(name = "Map Id")
+    @Column(name = "Map")
     private String map;
 
     @Column(name = "Players")
-    private List<PlayerRobot> player;
+    private Map<UUID, UUID> players;
 
+    @OneToMany
     @Column(name = "Moves")
     private List<Move> moves;
 
@@ -26,15 +29,14 @@ public class Game {
 
     public Game() {}
 
-    public Game(String id, String map, List<PlayerRobot> player, List<Move> moves, GameStatus status) {
-        this.id = id;
+    public Game(String map, Map<UUID, UUID> players, List<Move> moves, GameStatus status) {
         this.map = map;
-        this.player = player;
+        this.players = players;
         this.moves = moves;
         this.status = status;
     }
 
-    public String getId() {
+    public UUID getId() {
         return id;
     }
 
@@ -42,8 +44,8 @@ public class Game {
         return map;
     }
 
-    public List<PlayerRobot> getPlayer() {
-        return player;
+    public Map<UUID, UUID> getPlayer() {
+        return players;
     }
 
     public List<Move> getMoves() {
@@ -52,5 +54,13 @@ public class Game {
 
     public GameStatus getStatus() {
         return status;
+    }
+
+    public void addPlayer(UUID playerId, UUID robotId) {
+        players.put(playerId, robotId);
+    }
+
+    public void addMove(Move move) {
+        moves.add(move);
     }
 }

@@ -60,4 +60,16 @@ public class Robot {
     public UUID getId() {
         return id;
     }
+
+    @Override
+    public String toString() {
+        return "Robot{" +
+                "\n\tid=" + id +
+                ", \n\tname='" + name + '\'' +
+                ", \n\thealth=" + health +
+                ", \n\tattackDamage=" + attackDamage +
+                ", \n\tattackRange=" + attackRange +
+                ", \n\tmovementRate=" + movementRate +
+                '}';
+    }
 }

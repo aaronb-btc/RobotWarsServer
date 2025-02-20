@@ -9,6 +9,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 import java.util.List;
+import java.util.Properties;
 
 public class HibernateController {
     private static final SessionFactory sessionFactory = new Configuration()
@@ -26,6 +27,15 @@ public class HibernateController {
         session.close();
     }
 
+    public static Object getObject(Class<?> objectClass, Object id) {
+        Session session = sessionFactory.openSession();
+
+        Object object = session.get(objectClass, id);
+
+        session.close();
+        return object;
+    }
+
     public static void removeObject(Object object, long index) {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
@@ -35,15 +45,6 @@ public class HibernateController {
 
         session.getTransaction().commit();
         session.close();
-    }
-
-    public static Object getObject(Class<?> objectClass, Object id) {
-        Session session = sessionFactory.openSession();
-
-        Object object = session.get(objectClass, id);
-
-        session.close();
-        return object;
     }
 
     public static void modifyObject(Object modifiedObject) {

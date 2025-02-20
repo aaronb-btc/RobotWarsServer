@@ -46,7 +46,6 @@ public class Map {
     }
 }
 
-
 class MapItem {
     protected String type;
     protected int index;
