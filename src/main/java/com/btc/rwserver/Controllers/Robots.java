@@ -1,6 +1,5 @@
-package com.btc.rwserver;
+package com.btc.rwserver.Controllers;
 
-import com.btc.rwserver.Controllers.HibernateController;
 import com.btc.rwserver.Models.Robot;
 
 import org.springframework.web.bind.annotation.*;

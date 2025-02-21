@@ -9,7 +9,6 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 import java.util.List;
-import java.util.Properties;
 
 public class HibernateController {
     private static final SessionFactory sessionFactory = new Configuration()
@@ -82,5 +81,9 @@ public class HibernateController {
         }
 
         return resultList;
+    }
+
+    public static void close() {
+        sessionFactory.close();
     }
 }
