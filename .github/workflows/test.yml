@@ -17,9 +17,6 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./src/main/java
 
     steps:
       - uses: actions/checkout@v4
@@ -32,7 +29,10 @@ jobs:
           cache: maven
 
       - name: Install dependencies
+        working-directory: .
         run: mvn clean install
 
+
       - name: Run Junit Tests
+        working-directory: ./src/main/java
         run: javac ..\..\test\java\com\btc\rwserver\RobotsTest.java
