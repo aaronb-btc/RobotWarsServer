@@ -29,10 +29,8 @@ jobs:
           cache: maven
 
       - name: Install dependencies
-        working-directory: ./
         run: mvn clean install
 
 
       - name: Run Junit Tests
-        working-directory: ./src/main/java
-        run: mvn clean verify
+        run: mvn verify
