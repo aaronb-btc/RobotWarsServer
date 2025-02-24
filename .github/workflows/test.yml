@@ -35,7 +35,4 @@ jobs:
 
       - name: Run Junit Tests
         working-directory: ./src/main/java
-        run: |
-          pwd
-          ls -R
-          javac ..\..\test\java\com\btc\rwserver\RobotsTest.java
+        run: javac ../../test/java/com/btc/rwserver/RobotsTest.java
