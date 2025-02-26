@@ -22,7 +22,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Format Code
-        uses: axel-op@googlejavaformat-action@v4
+        uses: axel-op/googlejavaformat-action@v4
         with:
           args: "--replace"
           skip-commit: true
