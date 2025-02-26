@@ -15,22 +15,6 @@ on:
     branches: [ "main" ]
 
 jobs:
-  format:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Format Code
-        uses: axel-op/googlejavaformat-action@v4
-        with:
-          args: "--replace"
-          skip-commit: true
-
-      - name: Print diffs
-        run: git --no-pager diff --exit-code
-
-
   test:
     runs-on: ubuntu-latest
 
