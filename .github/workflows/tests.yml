@@ -1,3 +1,5 @@
+name: Unit Tests
+
 on:
   push:
     branches: [ "main" ]
@@ -24,5 +26,3 @@ jobs:
 
       - name: Run tests
         run: mvn clean verify
-
-name: Unit Tests
