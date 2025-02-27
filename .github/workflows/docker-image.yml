@@ -5,7 +5,7 @@ on:
     branches: [ "main" ]
 
 jobs:
-  test:
+  Build-docker-image:
     runs-on: ubuntu-latest
 
     steps:
@@ -19,10 +19,11 @@ jobs:
           distribution: 'temurin'
           cache: maven
 
-      - name: Install dependencies
-        run: mvn clean install -Dmaven.test.skip=true
+      - name: Set up Docker
+        uses: docker/setup-docker-action@v4
 
-      - name: Run tests
-        run: mvn clean verify
+      - name: Build jar
+        run: mvn clean package
 
-name: Unit Tests
+      - name: Build-docker-image
+        run: docker build -t aaron/robotwars:1.0 .
